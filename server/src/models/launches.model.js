@@ -29,8 +29,21 @@ function getAllLaunches() {
   return Array.from(launches.values());
 }
 
+function existsLaunchWithId(launchId) {
+  return launches.has(launchId);
+}
+
+function abortLaunchById(launchId) {
+  const aborted = launches.get(launchId);
+  aborted.upcoming = false;
+  aborted.success = false;
+  return aborted;
+}
+
 module.exports = {
   launches,
   getAllLaunches,
-  addNewLaunch
+  addNewLaunch,
+  existsLaunchWithId,
+  abortLaunchById
 }
